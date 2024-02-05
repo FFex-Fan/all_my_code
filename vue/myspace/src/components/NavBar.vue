@@ -27,7 +27,8 @@ export default {
             <router-link class="nav-link" :to="{name: 'user_list'}">用户列表</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" :to="{name: 'user_activity'}">用户动态</router-link>
+            <!-- route 中修改后，此处的链接需要加上 params:{user_id: 2} 参数 -->
+            <router-link class="nav-link" :to="{name: 'user_activity', params:{user_id: 2}}">用户动态</router-link>
           </li>
         </ul>
         <ul class="navbar-nav">

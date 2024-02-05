@@ -7,8 +7,9 @@
             父组件向子组件传递信息：
                 1. 在子组件标签中添加参数  ====>  :（传递到子组件中，子组件的调用名称）="父组件参数名称,也可以是一个表达式"
                 2. :parent_user="user"  <====>  v-bind:parent_user="user"
-                3. @follow/unfollow 向 子组件info 中传递父组件定义的函数，使在 子组件info 中可以调用父组件的函数，修改对应属性
-                4. @(父组件中定义的名称，即：子组件中调用的名称)="父组件中定义的函数名"
+                3. 若想要在某一属性中使用变量而不是字符串，在改属性前加上 : （v-bind）即可
+                4. @follow/unfollow 向 子组件info 中传递父组件定义的函数，使在 子组件info 中可以调用父组件的函数，修改对应属性
+                5. @(父组件中定义的名称，即：子组件中调用的名称)="父组件中定义的函数名"
         -->
         <U_A_info :parent_user="user" @follow="follow" @unfollow1="unfollow"></U_A_info>
         <U_A_write @add_post="add_post"></U_A_write>
@@ -29,6 +30,7 @@ import U_A_write from "@/components/U_Activity_cpn/U_A_write.vue";
 import U_A_posts from "@/components/U_Activity_cpn/U_A_posts.vue";
 
 import {reactive} from "vue";
+import {useRoute} from "vue-router";
 
 export default {
   name: 'UserActivityView',
@@ -39,6 +41,10 @@ export default {
     U_A_write,
   },
   setup() {
+    const route = useRoute();  // 获取链接信息
+    const user_id = route.params.user_id;  // 获取链接中的 user_id 属性
+    console.log(user_id);
+
     // 改属性的值需要在 U_A_info 中被渲染出来，即：需要在不同组件之间传递信息
     const user = reactive({
       user_name: "fm",

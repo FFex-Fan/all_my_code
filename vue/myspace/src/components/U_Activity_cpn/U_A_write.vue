@@ -21,7 +21,7 @@ export default {
     const add_post = () => {  // 发布动态 函数
       if (content.value === "") return;  // 内容为空则直接返回
       context.emit('add_post', content.value);
-      content.value = "";// content 中数据的读取和修改都要用 content.value 来做
+      content.value = "";  // 由于 content 由 ref 定义，故 content 中数据的读取和修改都要用 content.value 来做
     };
 
     return {
