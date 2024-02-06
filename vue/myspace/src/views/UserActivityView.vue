@@ -31,6 +31,8 @@ import U_A_posts from "@/components/U_Activity_cpn/U_A_posts.vue";
 
 import {reactive} from "vue";
 import {useRoute} from "vue-router";
+import $ from 'jquery';
+import {useStore} from "vuex";
 
 export default {
   name: 'UserActivityView',
@@ -41,53 +43,59 @@ export default {
     U_A_write,
   },
   setup() {
+    const store = useStore();
     const route = useRoute();  // 获取链接信息
     const user_id = route.params.user_id;  // 获取链接中的 user_id 属性
-    console.log(user_id);
-
     // 改属性的值需要在 U_A_info 中被渲染出来，即：需要在不同组件之间传递信息
-    const user = reactive({
-      user_name: "fm",
-      user_id: 1,
-      first_name: "Miao",
-      last_name: "Fang",
-      fans_cnt: 0,
-      is_followed: false,
+    const user = reactive({});
+    // 定义动态列表中的数据
+    const posts = reactive({});
+
+    $.ajax({
+      url: "https://app165.acapp.acwing.com.cn/myspace/getinfo/",
+      type: "GET",
+      data: {
+        user_id: user_id,
+      },
+      headers: {
+        'Authorization': "Bearer " + store.state.user.access,
+      },
+      success(resp) {
+        user.id = resp.id;
+        user.username = resp.username;
+        user.photo = resp.photo;
+        user.followerCount = resp.followerCount;
+        user.is_followed = resp.is_followed;
+      }
     });
 
-    // 定义动态列表中的数据
-    const posts = reactive({
-      count: 3,
-      posts: [
-        {
-          id: 1,
-          user_id: 1,
-          content: "好开心"
-        },
-        {
-          id: 2,
-          user_id: 1,
-          content: "好开心～～～"
-        },
-        {
-          id: 3,
-          user_id: 1,
-          content: "好开心～～～～～～"
-        },
-      ],
-    });
+    $.ajax({
+      url: "https://app165.acapp.acwing.com.cn/myspace/post/",
+      type: "GET",
+      data: {
+        user_id: user_id,
+      },
+      headers: {
+        'Authorization': "Bearer " + store.state.user.access,
+      },
+      success(resp) {
+        posts.posts = resp;
+      }
+    })
+
+
 
     // +关注， 父组件中定义的参数必须在父组件中才能进行修改
     const follow = () => {
       if (user.is_followed) return;
-      user.fans_cnt++;
+      user.followerCount++;
       user.is_followed = true;
     }
 
     // 取消关注
     const unfollow = () => {
       if (!user.is_followed) return;
-      user.fans_cnt--;
+      user.followerCount--;
       user.is_followed = false;
     }
 

@@ -2,12 +2,12 @@
   <div class="card">
     <div class="card-body">
       <div class="row">
-        <div class="col-3">
-          <img class="img-fluid" src="https://cdn.acwing.com/media/user/profile/photo/236181_lg_2b756ca6cf.webp" alt="">
+        <div class="col-3  img-field">
+          <img class="img-fluid" :src="parent_user.photo" alt="">
         </div>
         <div class="col-9">
-          <div class="name">{{ fullName }}</div>
-          <div class="fans">粉丝数：{{ parent_user.fans_cnt }}</div>
+          <div class="name">{{ parent_user.username }}</div>
+          <div class="fans">粉丝数：{{ parent_user.followerCount }}</div>
           <!--
               1. v-on:click  <====>  @click  ，用于将点击事件和对应函数绑定起来
               2. v-if   ，如果条件成立，则显示该标签，否则不显示该标签
@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import {computed} from "vue";
 
 export default {
   name: "U_A_info",
@@ -51,10 +50,6 @@ export default {
 
   // setup() 有两个参数，props 和 context
   setup(props, context) {
-    // 计算出对应的字符串
-    let fullName = computed(() => props.parent_user.last_name + " " + props.parent_user.first_name);
-
-
     // +关注 函数（注意：不能在子组件中修改父组件中定义的属性）
     const follow = () => {
       context.emit('follow');  // 通过 context.emit() 方法调用父组件中传递过来的函数
@@ -65,7 +60,6 @@ export default {
     }
 
     return {
-      fullName,
       follow,
       unfollow,
     }
@@ -79,11 +73,12 @@ export default {
 
 .img-fluid {
   border-radius: 50%;
-  margin: 0 auto;
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
+}
 
+.img-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .name {
