@@ -36,6 +36,8 @@
 </template>
 
 <script>
+import $ from 'jquery';
+import {useStore} from "vuex";
 
 export default {
   name: "U_A_info",
@@ -50,13 +52,47 @@ export default {
 
   // setup() 有两个参数，props 和 context
   setup(props, context) {
+
+    const store = useStore();
+
     // +关注 函数（注意：不能在子组件中修改父组件中定义的属性）
     const follow = () => {
-      context.emit('follow');  // 通过 context.emit() 方法调用父组件中传递过来的函数
+      $.ajax({
+        url: "https://app165.acapp.acwing.com.cn/myspace/follow/",
+        type: "POST",
+        data: {
+          target_id: props.parent_user.id,
+        },
+        headers: {
+          'Authorization': 'Bearer ' + store.state.user.access,
+        },
+        success(resp) {
+          if (resp.result === 'success') {
+            context.emit('follow');  // 通过 context.emit() 方法调用父组件中传递过来的函数
+          }
+        }
+      })
+
     }
 
     const unfollow = () => {
-      context.emit('unfollow1');  // 通过 context.emit() 方法调用父组件中传递过来的函数
+      $.ajax({
+        url: "https://app165.acapp.acwing.com.cn/myspace/follow/",
+        type: "POST",
+        data: {
+          target_id: props.parent_user.id,
+        },
+        headers: {
+          'Authorization': 'Bearer ' + store.state.user.access,
+        },
+        success(resp) {
+          if (resp.result === 'success') {
+            context.emit('unfollow1');  // 通过 context.emit() 方法调用父组件中传递过来的函数
+          }
+
+        }
+      })
+
     }
 
     return {

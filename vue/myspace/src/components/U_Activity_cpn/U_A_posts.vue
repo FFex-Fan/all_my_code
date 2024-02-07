@@ -10,6 +10,7 @@
         <div class="card single-post">
           <div class="card-body">
             {{ post.content }}
+            <button @click="delete_post(post.id)" v-if="is_me" type="button" class="btn btn-outline-danger btn-sm">删除</button>
           </div>
         </div>
       </div>
@@ -18,6 +19,11 @@
 </template>
 
 <script>
+
+import {useStore} from "vuex";
+import {computed} from "vue";
+import $ from 'jquery';
+
 export default {
   name: "U_A_posts",
 
@@ -26,6 +32,40 @@ export default {
       type: Object,
       required: true,
     },
+    parent_user: {
+      type: Object,
+      required: true,
+    },
+  },
+
+  setup(props, context) {
+    const store = useStore();
+    const is_me = computed(() => store.state.user.id === props.parent_user.id)
+
+
+    const delete_post = post_id => {
+      $.ajax({
+        url:"https://app165.acapp.acwing.com.cn/myspace/post/",
+        type: "DELETE",
+        data: {
+          post_id,
+        },
+        headers: {
+          'Authorization': "Bearer " + store.state.user.access,
+        },
+        success(resp) {
+          if (resp.result === "success") {
+            context.emit('delete_post', post_id);
+          }
+        }
+      })
+
+    }
+
+    return {
+      is_me,
+      delete_post,
+    }
   }
 }
 </script>
@@ -33,5 +73,9 @@ export default {
 <style scoped>
 .single-post {
   margin-bottom: 10px;
+}
+
+button {
+  float: right;
 }
 </style>

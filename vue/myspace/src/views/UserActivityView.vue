@@ -12,10 +12,10 @@
                 5. @(父组件中定义的名称，即：子组件中调用的名称)="父组件中定义的函数名"
         -->
         <U_A_info :parent_user="user" @follow="follow" @unfollow1="unfollow"></U_A_info>
-        <U_A_write @add_post="add_post"></U_A_write>
+        <U_A_write v-if="is_me" @add_post="add_post"></U_A_write>
       </div>
       <div class="col-9">
-        <U_A_posts :parent_posts="posts"></U_A_posts>
+        <U_A_posts :parent_user="user" :parent_posts="posts" @delete_post="delete_post"></U_A_posts>
       </div>
     </div>
   </ContentBase>
@@ -29,7 +29,7 @@ import U_A_info from "@/components/U_Activity_cpn/U_A_info.vue";
 import U_A_write from "@/components/U_Activity_cpn/U_A_write.vue";
 import U_A_posts from "@/components/U_Activity_cpn/U_A_posts.vue";
 
-import {reactive} from "vue";
+import {computed, reactive} from "vue";
 import {useRoute} from "vue-router";
 import $ from 'jquery';
 import {useStore} from "vuex";
@@ -45,11 +45,14 @@ export default {
   setup() {
     const store = useStore();
     const route = useRoute();  // 获取链接信息
-    const user_id = route.params.user_id;  // 获取链接中的 user_id 属性
+    const user_id = parseInt(route.params.user_id);  // 获取链接中的 user_id 属性
     // 改属性的值需要在 U_A_info 中被渲染出来，即：需要在不同组件之间传递信息
     const user = reactive({});
     // 定义动态列表中的数据
     const posts = reactive({});
+
+    // 判断是否是自己的页面
+    const is_me = computed(() => user_id === store.state.user.id);
 
     $.ajax({
       url: "https://app165.acapp.acwing.com.cn/myspace/getinfo/",
@@ -79,6 +82,7 @@ export default {
         'Authorization': "Bearer " + store.state.user.access,
       },
       success(resp) {
+        posts.count = resp.length;
         posts.posts = resp;
       }
     })
@@ -109,12 +113,20 @@ export default {
       })
     }
 
+    // 删除动态
+    const delete_post = post_id => {
+      posts.posts = posts.posts.filter(post => post.id !== post_id);
+      posts.count = posts.posts.length;
+    }
+
     return {
       user,
       posts,
       follow,
       unfollow,
       add_post,
+      is_me,
+      delete_post,
     }
   }
 }

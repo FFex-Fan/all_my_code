@@ -11,17 +11,35 @@
 
 <script>
 import {ref} from "vue";
+import $ from 'jquery';
+import {useStore} from "vuex";
 
 export default {
   name: "U_A_write",
 
   setup(props, context) {
     let content = ref('');  // 用于获取 textarea 中的内容
+    const store = useStore();  // JWT 验证需要 useStore 模块
 
     const add_post = () => {  // 发布动态 函数
       if (content.value === "") return;  // 内容为空则直接返回
-      context.emit('add_post', content.value);
-      content.value = "";  // 由于 content 由 ref 定义，故 content 中数据的读取和修改都要用 content.value 来做
+
+      $.ajax({
+        url: "https://app165.acapp.acwing.com.cn/myspace/post/",
+        type: "POST",
+        data: {
+          content: content.value,
+        },
+        headers: {
+          'Authorization': "Bearer " + store.state.user.access,
+        },
+        success(resp) {
+          if (resp.result === 'success') {
+            context.emit('add_post', content.value);
+            content.value = "";  // 由于 content 由 ref 定义，故 content 中数据的读取和修改都要用 content.value 来做
+          }
+        }
+      })
     };
 
     return {

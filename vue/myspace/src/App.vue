@@ -1,8 +1,7 @@
 <template>
-    <NavBar></NavBar>
-
-
-  <router-view/>
+  <NavBar></NavBar>
+<!-- :key="$route.fullPath" 改属性使两个不同的 userActivity 页面间可以刷新 -->
+  <router-view :key="$route.fullPath"/>
 </template>
 
 <script>
