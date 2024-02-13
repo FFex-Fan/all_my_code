@@ -13,7 +13,7 @@ export default {
   name: 'NotFoundView',
   components: {
     ContentBase,  // 引入公共代码模版
-  }
+  },
 }
 </script>
 

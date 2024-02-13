@@ -76,8 +76,8 @@ export default {
           } else {
             error_message.value = resp.result;
           }
-        }
-      })
+        },
+      });
     };
 
     return {

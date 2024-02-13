@@ -84,7 +84,7 @@ export default {
       success(resp) {
         posts.count = resp.length;
         posts.posts = resp;
-      }
+      },
     })
 
 

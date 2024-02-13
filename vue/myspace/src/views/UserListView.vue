@@ -18,7 +18,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import ContentBase from "@/components/ContentBase.vue";  // import 的名称与 ContentBase 定义的名称可以不同
 import $ from 'jquery';  // 使用 Ajax 需要先饮用 jquery 中的 $
 import {ref} from "vue";

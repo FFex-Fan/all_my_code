@@ -28,7 +28,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import ContentBase from "@/components/ContentBase.vue";  // import 的名称与 ContentBase 定义的名称可以不同
 import {ref} from "vue";
 import {useStore} from "vuex";

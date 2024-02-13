@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import {jwtDecode} from "jwt-decode";
 
-
 const ModelUser = {
     state: {
         id: "",
@@ -11,8 +10,10 @@ const ModelUser = {
         access: "",
         refresh: "",
         is_login: false,
+    }, 
+    getters: {
+        
     },
-    getters: {},
     mutations: {  // 外部调用 mutations 中的某个名称，需要使用 store.commit("属性名称", 参数)
         updateUser(state, user) {  // 更新用户状态
             state.id = user.id;
@@ -26,7 +27,6 @@ const ModelUser = {
 
         // 由于 mutations 不能支持异步，故获取信息需要放在 actions 中
         // 又因为 actions 中不能进行修改操作，故更新操作需要放在 mutations 中
-
         updateAccess(state, access) {  // 更新 access
             state.access = access;
         },
@@ -41,8 +41,8 @@ const ModelUser = {
             state.refresh = "";
             state.is_login = false;
         }
-
     },
+
     actions: {  // 外部调用 actions 中的某个名字，需要使用 store.dispatch("属性名称", 参数)
         // ajax 获取 userid， userid 获取 用户信息
         login(context, data) {
@@ -67,7 +67,7 @@ const ModelUser = {
                             },
                             success(resp) {  // 更新 access
                                 context.commit("updateAccess", resp.access)
-                            }
+                            },
                         })
                     }, 1000 * 60 * 4.5)
 
@@ -96,8 +96,6 @@ const ModelUser = {
                 }
             });
         },
-
-
     },
     modules: {},
 }
