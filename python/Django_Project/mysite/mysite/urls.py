@@ -26,4 +26,12 @@ urlpatterns = [
     path('index/', views.index),
     path('user/add/', views.user_add),
     path('user/list/', views.user_list),
+    path('tpl/', views.tpl),
+    path('something/', views.something),
+
+    # 用户登录
+    path('login/', views.login),
+
+    # 测试 orm
+    path('orm/', views.orm)
 ]
