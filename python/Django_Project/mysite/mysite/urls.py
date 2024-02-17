@@ -33,5 +33,12 @@ urlpatterns = [
     path('login/', views.login),
 
     # 测试 orm
-    path('orm/', views.orm)
+    path('orm/', views.orm),
+
+    # 案例
+    path('info/list/', views.info_list),
+
+    path('info/add/', views.info_add),
+
+    path('info/delete/', views.info_delete)
 ]

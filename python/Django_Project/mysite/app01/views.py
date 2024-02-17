@@ -81,3 +81,28 @@ def orm(request):
     for obj in data_list:
         print(obj.id, obj.name, obj.password, obj.data)
     return HttpResponse("成功")
+
+
+def info_list(request):
+    data_list = models.UserInfo.objects.all()
+    return render(request, 'info_list.html',{'data_list':data_list})
+
+
+def info_add(request):
+    if request.method == "GET":
+        return render(request, 'info_add.html')
+
+    # 获取用户提交的数据
+    username = request.POST.get("user")
+    password = request.POST.get("pwd")
+    age = request.POST.get("age")
+
+    # 添加到数据库
+    models.UserInfo.objects.create(name=username, password=password, age=age)
+    # 重定向到本地某个网页直接写后面的部分即可，会自行拼接域名
+    return redirect("/info/list")
+
+def info_delete(request):
+    id = request.GET.get("id")
+    models.UserInfo.objects.filter(id=id).delete()
+    return redirect("/info/list")
