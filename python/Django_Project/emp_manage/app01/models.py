@@ -19,7 +19,7 @@ class UserInfo(models.Model):
     email = models.EmailField(verbose_name='电子邮件', null=True, blank=True)
     # DecimalField 中，总长度为10，小数占2, 默认为 0
     account = models.DecimalField(max_digits=10, decimal_places=2, default=0, verbose_name='账户余额')
-    create_time = models.DateTimeField(verbose_name='入职时间')
+    create_time = models.DateField(verbose_name='入职时间')
 
     # 无约束
     # depart_id = models.BigIntegerField(verbose_name='部门ID')
@@ -43,3 +43,25 @@ class UserInfo(models.Model):
         (2, '女'),
     )
     gender = models.SmallIntegerField(verbose_name='性别', choices=gender_choices)
+
+
+class VIPMobile(models.Model):
+    ''' 靓号表 '''
+    mobile = models.CharField(verbose_name='手机号', max_length=11)
+    price = models.IntegerField(verbose_name='价格')
+    level_choices = (
+        (1, '低级'),
+        (2, '中级'),
+        (3, '高级'),
+    )
+    level = models.SmallIntegerField(verbose_name='等级', choices=level_choices, default=1)
+    status_choices = (
+        (1, '已占用'),
+        (0, '未使用'),
+    )
+    status = models.SmallIntegerField(verbose_name='状态', choices=status_choices)
+
+class Admin(models.Model):
+    """ 管理员 """
+    username = models.CharField(verbose_name='用户名', max_length=32)
+    password = models.CharField(verbose_name='密码',max_length=64)

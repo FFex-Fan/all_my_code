@@ -17,19 +17,34 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from app01 import views
+from app01.views import depart, user, mobile, admin, account
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
 
     # 部门管理
-    path('depart/list/', views.depart_list),
-    path('depart/add/', views.depart_add),
-    path('depart/delete/', views.depart_delete),
-    path('depart/<int:depart_id>/edit/', views.depart_edit), # http://localhost:8000/depart/10/edit/
+    path('depart/list/', depart.depart_list),
+    path('depart/add/', depart.depart_add),
+    path('depart/delete/', depart.depart_delete),
+    path('depart/<int:depart_id>/edit/', depart.depart_edit), # http://localhost:8000/depart/10/edit/
 
     # 用户管理
-    path('user/list/', views.user_list),
-    path('user/add/', views.user_add),
-    path('user/model/form/add/', views.model_form_add)
+    path('user/list/', user.user_list),
+    path('user/add/', user.user_add),
+    path('user/model/form/add/', user.model_form_add),
+    path('user/<int:user_id>/edit/', user.user_edit),
+    path('user/<int:user_id>/delete/', user.user_delete),
+
+    # 靓号管理
+    path('mobile/list/', mobile.mobile_list),
+    path('mobile/add/', mobile.mobile_add),
+    path('mobile/<int:mobile_id>/edit/', mobile.mobile_edit),
+    path('mobile/<int:mobile_id>/delete/', mobile.mobile_delete),
+
+    # 管理员管理
+    path('admin/list/', admin.admin_list),
+    path('admin/add/', admin.admin_add),
+
+    # 登陆
+    path('login/', account.login)
 ]

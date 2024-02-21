@@ -48,8 +48,8 @@
                         <th>{{ item.create_time|date:'Y-m-d' }}</th>
                         <th>{{ item.depart.title }}</th>
                         <td>
-                            <a class="btn btn-primary btn-sm" href="#">编辑</a>
-                            <a class="btn btn-sm btn-danger" href="#">删除</a>
+                            <a class="btn btn-primary btn-sm" href="/user/{{ item.id }}/edit">编辑</a>
+                            <a class="btn btn-sm btn-danger" href="/user/{{ item.id }}/delete">删除</a>
                         </td>
                     </tr>
                 {% endfor %}
