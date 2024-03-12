@@ -53,7 +53,7 @@ export default {
         username: username.value,  // 传入参数
         password: password.value,
         success() {
-          // console.log("success");
+          console.log("success ！！！！！！！！！！！！！！！！！！1");
           router.push({name: "user_list"});  // 成功则跳转到 /user_list 页面
         },
         error() {  // 失败的回调函数

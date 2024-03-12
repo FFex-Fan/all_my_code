@@ -64,3 +64,5 @@ custom_settings.py
 data/
 .venv/
 .ruff_cache/
+
+src-old/

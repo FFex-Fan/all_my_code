@@ -87,6 +87,7 @@ const ModelUser = {
                                 refresh: refresh,
                                 is_login: true,  // 登陆成功，修改登陆状态
                             });
+                            console.log("before success");
                             data.success(); // 调用 loginView 传过来成功的回调函数，console 输出 success
                         }
                     })
