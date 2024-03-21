@@ -58,7 +58,7 @@ export default {
     //   this.dialogLoginVisible = true;
     // },
     loginClick() {
-      store.dispatch("login", {
+      this.$store.dispatch("login", {
         username: this.form.username,
         password: this.$md5(this.form.password),
         $router: this.$router,
@@ -240,42 +240,42 @@ section .color {
   height: 100px;
 }
 
-.login_box .square:nth-child(1) {
+.login_box .square:nth-child(2) {
   top: 280px;
   right: 370px;
   width: 200px;
   height: 200px;
 }
 
-.login_box .square:nth-child(2) {
+.login_box .square:nth-child(3) {
   top: 20px;
   right: 30px;
   width: 70px;
   height: 70px;
 }
 
-.login_box .square:nth-child(3) {
+.login_box .square:nth-child(4) {
   top: 110px;
   right: -100px;
   width: 40px;
   height: 40px;
 }
 
-.login_box .square:nth-child(4) {
+.login_box .square:nth-child(5) {
   top: 310px;
   right: -110px;
   width: 150px;
   height: 150px;
 }
 
-.login_box .square:nth-child(5) {
+.login_box .square:nth-child(6) {
   top: 400px;
   right: 140px;
   width: 60px;
   height: 60px;
 }
 
-.login_box .square:nth-child(6) {
+.login_box .square:nth-child(7) {
   top: 90px;
   right: 390px;
   width: 60px;

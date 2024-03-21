@@ -1,7 +1,6 @@
 <template>
   <el-form :model="choiceproblemform"
-           label-position="right"
-           v-loading="loading">
+           label-position="right">
 
     <el-form-item label="选择题题目编号：">
       <el-input v-model="choiceproblemform.ChoiceProblemId"

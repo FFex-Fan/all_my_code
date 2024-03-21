@@ -10,18 +10,25 @@ import VueClipboard from 'vue-clipboard2'
 import 'babel-polyfill' //兼容IE6
 import store from "./store/index";
 
+
+
 // element ui
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 // bootstrap
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap'
-import 'bootstrap-icons/font/bootstrap-icons.css'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import {ExpansionPanel} from 'muse-ui';
 
-Vue.use(ElementUI).use(ExpansionPanel).use(VueClipboard).use(Vuex)
+// iView
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';
+
+
+Vue.use(ElementUI).use(iView).use(ExpansionPanel).use(VueClipboard).use(Vuex)
 
 Vue.config.productionTip = false
 Vue.prototype.$md5 = md5;

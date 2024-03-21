@@ -46,6 +46,7 @@
 <script>
 
 
+import store from "../../store";
 
 export default {
   name: "register",
@@ -62,8 +63,6 @@ export default {
     };
   },
   methods: {
-
-
     registerClick() {
       // console.log("register is used~~~~")
       // console.log("username:" + form.username + " password:" + form.password + " confirm_password" + form.confirm + " email:" + form.email);
@@ -80,9 +79,10 @@ export default {
         return;
       }
 
-      for (let i in this.invalid_list)
-        if (this.form.username.indexOf(i) >= 0) {
+      for (let i = 0; i <= this.form.username.length; i++)
+        if (this.invalid_list.indexOf(this.form.username[i]) >= 0) {
           this.$message.error("用户名不合法！");
+          console.log(this.form.username[i]);
           return;
         }
 
@@ -95,15 +95,16 @@ export default {
             this.$message.error("用户名已被占用！");
             return;
           }
-          this.$message({
-            message: "Success!",
-            type: "success"
+          store.dispatch("login", {  // 注册成功自动登陆
+            username: this.form.username,
+            password: this.form.password,
+            $router: this.$router,
           });
           this.form.password = "";
         })
         .catch(error => {
           this.$message.error(
-            "Server Error！"
+            "服务器异常！"
           );
           console.log(JSON.stringify(error.response.data))
         });
@@ -277,42 +278,42 @@ section .color {
   height: 100px;
 }
 
-.register_box .square:nth-child(1) {
+.register_box .square:nth-child(2) {
   top: 380px;
   right: 370px;
   width: 200px;
   height: 200px;
 }
 
-.register_box .square:nth-child(2) {
+.register_box .square:nth-child(3) {
   top: 35px;
   right: 30px;
   width: 70px;
   height: 70px;
 }
 
-.register_box .square:nth-child(3) {
+.register_box .square:nth-child(4) {
   top: 110px;
   right: -100px;
   width: 40px;
   height: 40px;
 }
 
-.register_box .square:nth-child(4) {
+.register_box .square:nth-child(5) {
   top: 300px;
   right: -130px;
   width: 150px;
   height: 150px;
 }
 
-.register_box .square:nth-child(5) {
+.register_box .square:nth-child(6) {
   top: 500px;
   right: 140px;
   width: 60px;
   height: 60px;
 }
 
-.register_box .square:nth-child(6) {
+.register_box .square:nth-child(7) {
   top: 90px;
   right: 390px;
   width: 60px;

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import VueRouter from "vue-router";
+import store from "../store";
 
 
 const homepage = r => require.ensure([], () => r(require("@/components/main")), 'main"');
@@ -18,21 +19,8 @@ const rank = r => require.ensure([], () => r(require("@/components/mainpage/rank
 const admin = r => require.ensure([], () => r(require("@/components/mainpage/admin")), 'mainpage');
 const billboard = r => require.ensure([], () => r(require("@/components/mainpage/billboard")), 'mainpage');
 const blog = r => require.ensure([], () => r(require("@/components/mainpage/blog")), 'mainpage');
-const wiki = r => require.ensure([], () => r(require("@/components/mainpage/wiki")), 'mainpage');
-const algorithm = r => require.ensure([], () => r(require("@/components/wiki/algorithm")), 'wiki');
-const mbcode = r => require.ensure([], () => r(require("@/components/wiki/code")), 'wiki');
-const trainning = r => require.ensure([], () => r(require("@/components/wiki/trainning")), 'wiki');
-const viewcode = r => require.ensure([], () => r(require("@/components/wiki/mbcode/viewcode")), 'wiki');
-const viewcodedetail = r => require.ensure([], () => r(require("@/components/wiki/mbcode/viewcodedetail")), 'wiki');
-const codeedit = r => require.ensure([], () => r(require("@/components/wiki/mbcode/codeedit")), 'wiki');
-const wikidetail = r => require.ensure([], () => r(require("@/components/utils/wikidetail")), 'utils');
-const trainningdetail = r => require.ensure([], () => r(require("@/components/wiki/trainning/trainningdetail")), 'wiki');
-const newalgorithm = r => require.ensure([], () => r(require("@/components/wiki/newalgorithm")), 'wiki');
-const todolist = r => require.ensure([], () => r(require("@/components/utils/todolist")), 'utils');
 const homework = r => require.ensure([], () => r(require("@/components/mainpage/homework")), 'mainpage');
 const givechoiceproblemscore = r => require.ensure([], () => r(require("@/components/admin/givechoiceproblemscore")), 'admin');
-const classes = r => require.ensure([], () => r(require("@/components/mainpage/classes")), 'mainpage');
-const classdetail = r => require.ensure([], () => r(require("@/components/mainpage/classdetail")), 'mainpage');
 
 
 Vue.use(Router)
@@ -76,6 +64,14 @@ export default new Router({
       path: '/problem',
       name: 'problem',
       component: problem,
+      // meta: {isAuth: true, title: '问题'},
+      // beforeEnter:(to, from, next) => {
+      //   if (store.state.is_login) {
+      //     next();
+      //     location.reload();
+      //   }
+      //   next();
+      // }
     },
     {
       path: '/problemdetail',
@@ -131,71 +127,6 @@ export default new Router({
       path: '/blog',
       name: 'blog',
       component: blog,
-    },
-    {
-      path: '/wiki',
-      name: 'wiki',
-      component: wiki,
-    },
-    {
-      path: '/classdetail',
-      name: 'classdetail',
-      component: classdetail,
-    },
-    {
-      path: '/classes',
-      name: 'classes',
-      component: classes,
-    },
-    {
-      path: '/wiki/algorithm',
-      name: 'algorithm',
-      component: algorithm,
-    },
-    {
-      path: '/wiki/code',
-      name: 'mbcode',
-      component: mbcode,
-    },
-    {
-      path: '/wiki/trainning',
-      name: 'trainning',
-      component: trainning,
-    },
-    {
-      path: '/wiki/mbcode/:username',
-      name: 'viewcode',
-      component: viewcode,
-    },
-    {
-      path: '/wiki/mbcodedetail/:codeID',
-      name: 'viewcodedetail',
-      component: viewcodedetail,
-    },
-    {
-      path: '/wiki/mbcodeedit',
-      name: 'codeedit',
-      component: codeedit,
-    },
-    {
-      path: '/wikidetail/:wikiid',
-      name: 'wikidetail',
-      component: wikidetail,
-    },
-    {
-      path: '/trainningdetail/:trainningid',
-      name: 'trainningdetail',
-      component: trainningdetail,
-    },
-    {
-      path: '/wiki/newalgorithm',
-      name: 'newalgorithm',
-      component: newalgorithm,
-    },
-    {
-      path: '/todolist',
-      name: 'todolist',
-      component: todolist,
     },
     {
       path: '/homework',

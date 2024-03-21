@@ -2,6 +2,8 @@ import axios from "axios";
 import {Message} from "element-ui";
 import store from './index'
 
+import createPersistedState from 'vuex-persistedstate'
+
 
 const ModelUser = {
   state: {
@@ -55,11 +57,14 @@ const ModelUser = {
               // console.log("logindata success")
               context.commit("updateUser", {
                 ...response,
+                username: data.username,
                 access: "",
                 refresh: "",
                 is_login: true,  // 登陆成功，修改登陆状态
               })
+              // window.sessionStorage.setItem("is_login", "true");
               data.$router.push({name: 'problem'});
+              // console.log(context.state.is_login);
             })
             .catch(() => {
               Message.error("服务器错误！");
@@ -74,7 +79,65 @@ const ModelUser = {
         .catch(() => {
           Message.error("用户名不存在");
         });
-    }
+    },
+
+    handleCommand(context, data) {
+      if (data.command === "logout") {
+        axios
+          .get("/logout/")
+          .then(response => {
+            Message({
+              message: "Logout Success!",
+              type: "success"
+            });
+
+            context.commit("updateUser", {
+              username: "",
+              access: "",
+              refresh: "",
+              is_login: false,
+            });
+
+            sessionStorage.setItem("username", "");
+            sessionStorage.setItem("name", "");
+            sessionStorage.setItem("rating", "");
+            sessionStorage.setItem("type", "");
+            data.$router.go(0);
+          })
+          .catch(error => {
+            Message.error("服务器错误！");
+            console.log(JSON.stringify(error.response));
+          });
+      }
+      if (data.command === "home") {
+        data.$router.push({
+          name: "user",
+          query: {username: sessionStorage.username}
+        });
+      }
+      if (data.command === "setting") {
+        data.$router.push({
+          name: "setting",
+          params: {username: sessionStorage.username}
+        });
+      }
+      if (data.command === "submission") {
+        data.$router.push({
+          name: "statue",
+          query: {username: sessionStorage.username}
+        });
+      }
+      if (data.command === "admin") {
+        data.$router.push({
+          name: "admin"
+        });
+      }
+      if (data.command === "classes") {
+        data.$router.push({
+          name: "classes"
+        });
+      }
+    },
   },
   modules: {},
 }

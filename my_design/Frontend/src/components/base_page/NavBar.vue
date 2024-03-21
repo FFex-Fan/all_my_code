@@ -29,31 +29,33 @@
           <el-button round
                      id="button"
                      size="middle"
-                     v-show="!loginshow">Register
-          </el-button>
+                     v-if="!this.$store.state.user.is_login"
+          >Register</el-button>
         </RouterLink>
 
         <RouterLink to="/login/">
           <el-button round
                      id="button"
                      size="middle"
-                     v-show="!loginshow">Login
-          </el-button>
+                     v-if="!this.$store.state.user.is_login"
+          >Login</el-button>
         </RouterLink>
 
-        <el-dropdown id="user"
-                     v-show="loginshow"
+        <el-dropdown id="user_login_show"
+                     v-if="this.$store.state.user.is_login"
                      @command="handleCommand"
-                     :show-timeout="100"
-                     :split-button="true">
-          <span class="el-dropdown-link">Welcome {{ username }}</span>
+                     :show-timeout="100">
+          <span class="el-dropdown-link">
+            {{ this.$store.state.user.username }}
+            <i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="home">Home</el-dropdown-item>
             <el-dropdown-item command="submission">Submission</el-dropdown-item>
             <el-dropdown-item command="setting">Setting</el-dropdown-item>
             <el-dropdown-item command="admin"
                               divided
-                              v-show="isadmin"
+                              v-if="is_admin"
             >Admin
             </el-dropdown-item>
             <el-dropdown-item command="logout"
@@ -68,63 +70,16 @@
 </template>
 
 <script>
+
 export default {
   name: 'NavBar',
   methods: {
     handleCommand(command) {
-      if (command === "logout") {
-        this.$axios
-          .get("/logout/")
-          .then(response => {
-            this.$message({
-              message: "登出" +
-                "成功！",
-              type: "success"
-            });
-            sessionStorage.setItem("username", "");
-            sessionStorage.setItem("name", "");
-            sessionStorage.setItem("rating", "");
-            sessionStorage.setItem("type", "");
-            this.loginshow = 0;
-            this.username = "";
-            this.$router.go(0);
-          })
-          .catch(error => {
-            this.$message.error(
-              "服务器错误！" + "(" + JSON.stringify(error.response.data) + ")"
-            );
-          });
-      }
-      if (command === "home") {
-        this.$router.push({
-          name: "user",
-          query: {username: sessionStorage.username}
-        });
-      }
-      if (command === "setting") {
-        this.$router.push({
-          name: "setting",
-          params: {username: sessionStorage.username}
-        });
-      }
-      if (command === "submission") {
-        this.$router.push({
-          name: "statue",
-          query: {username: sessionStorage.username}
-        });
-      }
-      if (command === "admin") {
-        this.$router.push({
-          name: "admin"
-        });
-      }
-      if (command === "classes") {
-        this.$router.push({
-          name: "classes"
-        });
-      }
-    }
-
+      this.$store.dispatch("handleCommand", {
+        command: command,
+        $router: this.$router,
+      })
+    },
   },
 
   components: {
@@ -136,13 +91,12 @@ export default {
     return {
       activeIndex: "1",
       school: "MyOJ",
-      loginshow: sessionStorage.username,
       username: sessionStorage.username,
-      isadmin: false
+      is_admin: false
     };
   },
   mounted() {
-    this.isadmin = sessionStorage.type === 2 || sessionStorage.type === 3;
+    this.is_admin = parseInt(sessionStorage.type) === 2 || parseInt(sessionStorage.type) === 3;
 
     var sb = this.$store.state.sb
     if (sb === undefined) {
@@ -174,10 +128,11 @@ export default {
   margin: 10px;
 }
 
-#user {
+#user_login_show {
   float: right;
-  margin-top: 8px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-right: 50px;
+  font-size: 18px;
 }
 
 
@@ -207,6 +162,10 @@ export default {
 
 .head {
   font-size: 16px;
+}
+
+.el-icon-arrow-down {
+  font-size: 12px;
 }
 
 </style>

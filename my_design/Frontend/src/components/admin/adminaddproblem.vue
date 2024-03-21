@@ -161,7 +161,7 @@ export default {
         output: "输出说明\n支持HTML格式和Katex公式\n\n，不能为空",
         sinput: "1 1|#)2 2",
         soutput: "2|#)4",
-        source: "LPOJ",
+        source: "MyOJ",
         time: 1000,
         memory: 64,
         hint: "提示\n支持HTML格式和Katex公式\n\n，不能为空",
@@ -171,7 +171,7 @@ export default {
           "*****C++*****\n\n*****C*****\n\n*****Python2*****\n\n*****Python3*****\n\n*****Java*****\n\n*****Swift5.1*****\n\n",
         level: 3,
         score: 100,
-        oj: "LPOJ",
+        oj: "MyOJ",
         isspj: false,
         istemp: false
       },

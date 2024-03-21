@@ -366,7 +366,7 @@ export default {
     },
     problemclick: function (row, column, cell, event) {
       this.$router.push({
-        name: "problemdetail",
+        name: "problem_view",
         query: {problemID: row.problem}
       });
     }

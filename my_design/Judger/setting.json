@@ -1,0 +1,15 @@
+{
+    "db_user":"root",
+    "db_pass":"20020617fan",
+    "db_ip":"localhost",
+    "db_port":"3306",
+    "db_database":"OJ",
+    "server_ip":"localhost",
+    "server_port":8888,
+    "backend_ip":"localhost",
+    "backend_port":8000,
+    "backend_head":"http",
+    "python3_path": "/usr/bin/python3",
+    "python2_path": "/usra/bin/python2.7",
+    "nodownload":"no"
+}

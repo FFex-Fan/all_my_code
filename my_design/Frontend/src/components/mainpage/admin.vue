@@ -38,19 +38,10 @@
                  :lazy="true">
       <adminrejudge></adminrejudge>
     </el-tab-pane>
-    <el-tab-pane label="添加与修改训练"
-                 :disabled="!isadmin"
-                 :lazy="true">
-      <admintrainning></admintrainning>
-    </el-tab-pane>
     <el-tab-pane label="爬虫信息管理"
                  :disabled="!isadmin"
                  :lazy="true">
       <adminboard></adminboard>
-    </el-tab-pane>
-    <el-tab-pane label="班级管理"
-                 :lazy="true">
-      <adminclassmanage></adminclassmanage>
     </el-tab-pane>
     <el-tab-pane label="网站设置"
                  :disabled="!isadmin"
@@ -67,10 +58,8 @@ import adminchangepro from "@/components/admin/adminchangepro";
 import adminchangecontest from "@/components/admin/adminchangecontest";
 import adminmanageuser from "@/components/admin/adminmanageuser";
 import adminrejudge from "@/components/admin/adminrejudge";
-import admintrainning from "@/components/admin/admintrainning";
 import adminboard from "@/components/admin/adminboard";
 import adminsetting from "@/components/admin/adminsetting";
-import adminclassmanage from "@/components/admin/adminclassmanage";
 import adminaddchoiceproblem from "@/components/admin/adminaddchoiceproblem";
 import adminchangechoiceproblem from "@/components/admin/adminchangechoiceproblem";
 
@@ -83,10 +72,8 @@ export default {
     adminchangecontest,
     adminmanageuser,
     adminrejudge,
-    admintrainning,
     adminboard,
     adminsetting,
-    adminclassmanage,
     adminaddchoiceproblem,
     adminchangechoiceproblem,
   },
@@ -100,8 +87,9 @@ export default {
   },
   methods: {},
   created() {
-    this.type = sessionStorage.type;
+    this.type = parseInt(sessionStorage.type);
     if (this.type !== 2 && this.type !== 3) {
+      // console.log("type: " + this.type);
       this.$message.error("您的权限不足，请联系管理员！");
       this.canshow = false;
       return;
