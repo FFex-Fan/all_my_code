@@ -9,7 +9,7 @@ from geopy.distance import geodesic
     1 ~ 33: 需要经过的城市
     34: 终点（北京）
 """
-xlsx_file = pd.ExcelFile('data/citys.xlsx')  # 读取xlsx文件中的数据
+xlsx_file = pd.ExcelFile('../data/citys.xlsx')  # 读取xlsx文件中的数据
 sheet_names = xlsx_file.sheet_names
 
 data = []

@@ -1,4 +1,3 @@
-import numpy as np
 import torch
 from torch.utils import data # 小批量处理数据
 from d2l import torch as d2l

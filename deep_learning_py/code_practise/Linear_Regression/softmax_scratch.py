@@ -75,8 +75,8 @@ def net(X):
 def cross_entropy(y_hat, y):
     """ 计算交叉熵损失 """
     # y_hat[range(len(y_hat)), y] ———— 按照二维数据访问数据
-    # 例如：y_hat[[0, 1, 2], [1, 2, 0]] => 访问 y_hat[0][1], y_hat[1][2], y_hat[2][0] 三个数据,
-    # 最终返回 tensor([y_hat[0][1], y_hat[1][2], y_hat[2][0]])
+    # 例如：y_hat[[0, 1], [0, 2]] => 访问 y_hat[0][0], y_hat[1][2] 两个数据,
+    # 最终返回 tensor([y_hat[0][0], y_hat[1][2])
     return -torch.log(y_hat[range(len(y_hat)), y])
 
 
@@ -90,7 +90,7 @@ def accuracy(y_hat, y):
     if len(y_hat.shape) > 1 and y_hat.shape[1] > 1:
         y_hat = y_hat.argmax(axis=1)  # 如果预测值是二维且有多个类别，则取元素值最大值的下标作为预测类别
     cmp = y_hat.type(y.dtype) == y  # 由于 y_hat 的类型可能与 y 不一致，则需要先转换为 y 的类型，然后比较预测值类别与真实值是否相等
-    return float(cmp.type(y.dtype).sum()) / len(y)  # 计算预测正确的数量除以总数，即为预测正确的概率
+    return float(cmp.type(y.dtype).sum())  # 计算预测正确的数量
 
 
 def evaluate_accuracy(net, data_iter):
@@ -186,7 +186,7 @@ if __name__ == "__main__":
 
     print(cross_entropy(y_hat, y))  # 输出交叉熵损失
 
-    print(accuracy(y_hat, y))  # 输出准确率
+    print(accuracy(y_hat, y) / len(y))  # 输出准确率
     print(evaluate_accuracy(net, test_iter))  # 随机猜测的准确率
 
     lr = 0.1  # 设置学习率
