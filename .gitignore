@@ -55,7 +55,6 @@ db.db
 #*.out
 *.sqlite3
 .python-version
-.DS_Store
 build.txt
 tmp/
 data/
