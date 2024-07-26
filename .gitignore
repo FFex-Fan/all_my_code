@@ -62,7 +62,7 @@ data/
 logs/
 custom_settings.py
 *.zip
-
+.ipynb_checkpoints/
 .venv/
 .ruff_cache/
 
