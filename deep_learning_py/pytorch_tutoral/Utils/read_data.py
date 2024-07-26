@@ -20,6 +20,7 @@ class MyData(Dataset):
     def __len__(self):
         return len(self.img_path)
 
+
 if __name__ == '__main__':
     root_dir = "../data/hymenoptera_data/train"
     ants_label_dir = "ants"

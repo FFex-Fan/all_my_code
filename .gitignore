@@ -58,6 +58,8 @@ db.db
 .DS_Store
 build.txt
 tmp/
+data/
+logs/
 custom_settings.py
 *.zip
 
