@@ -1,68 +1,179 @@
+# macOS 系统文件
 .DS_Store
-# Byte-compiled / optimized / DLL files
+.AppleDouble
+.LSOverride
+
+# macOS 特有的文件
+Icon?
+._*
+
+# 缓存文件
+[Tt]humbs.db
+*.DS_Store
+
+# Python 缓存文件
 __pycache__/
 *.py[cod]
-# C extensions
-*.so
-# Distribution / packaging
-.Python
+*$py.class
+
+# 日志文件
+logs/
+*.log
+*.out
+*.err
+
+# 环境设置文件
+.env
+.venv/
 env/
-bin/
-build/
-develop-eggs/
-dist/
-eggs/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook 检查点
+.ipynb_checkpoints
+
+# 深度学习框架生成的文件
+checkpoints/
+*.ckpt
+*.h5
+
+# Python 打包生成的文件
 *.egg
+*.egg-info/
+dist/
+build/
+*.par
+
+# PyInstaller
+# 生成的 /dist 文件夹包含可执行文件
+dist/
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
+
 # Unit test / coverage reports
 htmlcov/
 .tox/
+.nox/
 .coverage
+.coverage.*
 .cache
 nosetests.xml
 coverage.xml
-# Translations
-*.mo
-# Mr Developer
-.mr.developer.cfg
-.project
-.pydevproject
-# Rope
-.ropeproject
+*.cover
+*.py,cover
+.hypothesis/
+*.pkl
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# C extensions
+*.so
+
+# 字节码文件
+*.pyo
+*.pyd
+*.pyc
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+CTestTestfile.cmake
+
+# 数据库
+*.sqlite3
+
+# CSV 文件
+*.csv
+
+# HDF5 文件
+*.hdf5
+*.h5
+
+# TensorBoard 日志
+logs/
+*.tfevents
+
+# 图像数据
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+
+# 视频数据
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# 音频数据
+*.wav
+*.mp3
+
+# 临时文件
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+*.old
+
+# 配置文件
+config.yaml
+config.json
+
+# 可执行文件
+*.exe
+*.out
+*.app
+
+# Package managers
+node_modules/
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Editor directories and files
+.vscode/
 .idea/
-# Django stuff:
-*.log
-*.pot
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+
+# Spyder project settings
+.spyproject
+.spyproject/workspace.ini
+.spyproject/spyderproject
+
 # Sphinx documentation
 docs/_build/
-# Back up file
-*~
-#db file
-db.db
-#vim cache
-*swp
-*swo
-#redis dump
-*.rdb
-#*.out
-*.sqlite3
-.python-version
-build.txt
-tmp/
+
+# PyCharm
+/.idea/
+
+# VS Code
+.vscode/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# 其他
 data/
 logs/
-custom_settings.py
-*.zip
-.ipynb_checkpoints/
-.venv/
-.ruff_cache/
-
-src-old/
+log/
+*.pth
