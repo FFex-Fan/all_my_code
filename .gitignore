@@ -108,6 +108,7 @@ logs/
 *.tfevents
 
 # 图像数据
+*.svg
 *.png
 *.jpg
 *.jpeg
@@ -175,5 +176,8 @@ docs/_build/
 # 其他
 data/
 logs/
+img/
 log/
+checkpoint/
 *.pth
+*.zip

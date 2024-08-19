@@ -7,10 +7,10 @@ vgg16 = torchvision.models.vgg16(pretrained=False)
 
 
 # 保存方式一，保存内容为：模型结构 + 模型参数
-torch.save(vgg16, "vgg16_method1.pth")
+torch.save(vgg16, "checkpoint/vgg16_method1.pth")
 
 # 保存方式二，保存内容为：模型参数（推荐）
-torch.save(vgg16.state_dict(), "vgg16_method2.pth")
+torch.save(vgg16.state_dict(), "checkpoint/vgg16_method2.pth")
 
 
 # 方式一 trap
@@ -23,4 +23,4 @@ class Net(nn.Module):
         return self.conv1(x)
 
 net = Net()
-torch.save(net, "vgg_test_custom_model.pth")
+torch.save(net, "checkpoint/vgg_test_custom_model.pth")
