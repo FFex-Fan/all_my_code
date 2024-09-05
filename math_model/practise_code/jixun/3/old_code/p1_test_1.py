@@ -21,7 +21,7 @@ def read_file(file):
 
     return g, tasks
 
-g, tasks = read_file('data/附件1/64x64map.txt')
+g, tasks = read_file('../data/附件1/64x64map.txt')
 
 # 检查位置有效性
 def is_valid(pos):

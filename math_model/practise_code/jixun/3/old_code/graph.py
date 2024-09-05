@@ -22,6 +22,6 @@ def read_file(file):
 
     return g, tasks, n, m
 
-map_data, tasks, n, m = read_file('data/附件1/8x8map.txt')
+map_data, tasks, n, m = read_file('../data/附件1/8x8map.txt')
 
 

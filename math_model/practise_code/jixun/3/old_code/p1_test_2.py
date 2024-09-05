@@ -24,7 +24,7 @@ def read_file(file):
 
 
 g, tasks = read_file(
-    'data/附件1/8x8map.txt')  # 读取地图和任务
+    '../data/附件1/8x8map.txt')  # 读取地图和任务
 
 
 def is_valid(pos):
