@@ -1,0 +1,505 @@
+% 导言区
+
+% 可以使用 \documentclass[12pt]{article} 来设置全局字体大小为 12pt
+\documentclass{article} % book, report, letter
+%\documentclass{ctexart} % 可以通过定义 ctexart 来代替 使用 ctex 包
+
+
+\usepackage{ctex}
+\usepackage{graphicx} % 导入插图包
+\usepackage{amsmath}
+\graphicspath{{figure/}, {img/}} % 图片在当前目录下的 figures 和 img 文件夹中
+%\usepackage{gensymb} % 提供了度数符号、弧度符号、特殊符号（欧姆、微米）等
+
+
+% \newcommand{名称}{指令}
+\newcommand{\degree}{^\circ} % 定义 \degree 含义
+\newcommand{\myfont}{\itshape\bfseries\sffamily} %定义字体命令
+
+
+\title{\heiti 勾股定理} % 中文前可以指定字体
+\author{\kaishu 张三}
+
+\date{\today}
+
+
+% 正文区
+\begin{document}
+	\maketitle % 上述生成的标题、作者、日期需要加上该语句才会显示
+	
+	\section{结构介绍}
+	hello \LaTeX \\ % 换行可以使用 \\ 或者空一行来实现
+	
+	% $$ 生成的是公式块，后面没有编号
+	Let $f(x)$ be define by the formula $$f(x) = 3x^2 + x - 1$$ 	which is a polynomial of degree 2. \\
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\section{设置中文}
+	
+	% 使用中文需要使用 xlatex 进行编译，并且在导言区引入 ctex：
+	%	方式一: \documentclass{ctexart}
+	%	方式二: \documentclass{article} 
+	%		   \usepackage{ctex}
+
+	勾股定理可以用现代语言表述如下：
+	
+	直角三角形斜边的平方等于两腰的平方和。
+	
+	% \degree 为定义，因此会报错，故需要引入 gensymb 包或者定义该命令
+	可以用符号语言表述为: 设直角三角形 $ABC$, 其中 $\angle C=90\degree$, 则有:
+	
+	\begin{equation} % equation 环境生成的公式后面会有编号
+		AB^2 = BC^2 + AC^2
+	\end{equation}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\section{设置字体}
+	% 可以使用 {} 来限定字体声明的范围
+
+
+	% 字体族：罗马字体、无衬线字体、打字机字体
+	% 罗马字体：笔画起始处有装饰
+	% 无衬线字体：笔画起始处无装饰
+	% 打字机字体：即，等宽字体
+	
+	% 字体族设置（罗马字体、无衬线字体、等宽字体）
+	\textrm{Roman Family} \textsf{Sans Serif Family} \texttt{Typewriter Family}
+	
+	% 或：
+	\rmfamily Roman Family {\sffamily Sans Serif Family} {\ttfamily Typewriter Family} 
+
+	
+	% 字体系列设置(粗细、宽度)
+	\textmd{Medium Series} \textbf{Boldface Series}
+	
+	{\mdseries Medium Series} {\bfseries Boldface Series}
+	
+	% 字体形状（直立、斜体、伪斜体）
+	\textup{Upright Shape} \quad \textit{Italic Shape} \quad \textsl{Slanted Shape} \quad \textsc{Small Caps Shape}
+	
+	{\upshape Upright Shape} \quad {\itshape Italic Shape} \quad {\slshape Slanted Shape} \quad {\scshape Sall Caps Shape}
+	
+	
+	
+	% 中文字体
+	{\songti 宋体} \quad {\heiti 黑体} \quad 	{\fangsong 仿宋} \quad {\kaishu 楷书} 
+	
+	中文字体的\textbf{粗体}与\textit{斜体}
+
+	% 字体大小
+	{\tiny  Hello}\\
+	{\scriptsize  Hello}\\
+	{\footnotesize  Hello}\\
+	{\small  Hello}\\
+	{\normalsize  Hello}\\
+	{\large  Hello}\\
+	{\LARGE  Hello}\\
+	{\huge  Hello}\\
+	{\Huge  Hello}\\
+	
+	{\zihao{0} 你好！} % 设置中文字体大小
+	
+	
+	
+	{\myfont Suggest Use Self-Font}
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	\section{文档结构}
+	\subsection{引言}
+	中国人口模式的转变发生于民国时期 关于民国的进步,我只讲两个过去人们比较忽略的问题。	一是人口模式。如前所述,传统时代人口的增减是王朝兴衰的显示器。
+	
+	中国人口模式的转变发生于民国时期 关于民国的进步,我只讲两个过去人们比较忽略的问题。	一是人口模式。如前所述,传统时代人口的增减是王朝兴衰的显示器。\par
+	中国人口模式的转变发生于民国时期 关于民国的进步,我只讲两个过去人们比较忽略的问题。	一是人口模式。如前所述,传统时代人口的增减是王朝兴衰的显示器。\\中国人口模式的转变发生于民国时期 关于民国的进步,我只讲两个过去人们比较忽略的问题。	一是人口模式。如前所述,传统时代人口的增减是王朝兴衰的显示器。
+	\subsection{实验方法}
+	\subsection{实验结果}
+	\subsubsection{数据}
+	\subsubsection{图表}
+	\subsubsection{实验过程}
+	\subsection{结论}
+	\subsection{致谢}	
+	
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
+	\section{特殊字符}
+	
+	\subsection{空白符号}
+	实在学不了唱歌，能把主子伺候好，跟老母亲我一起去淘宝直播 卖宠物用品也是极好的啊，我学生家里就是卖宠物用品的，中日混血，家里有一群猫狗，一墙的仓鼠笼子（我看过照片，大概有几十个的样子）
+	
+
+	% 1em (当前字体中M的宽度)
+	quad：a \quad b 
+	
+	% 2em
+	qquad：a \qquad b 
+	
+	% 约为 1/6 个em
+	thinspace：a\,b a \thinspace b 
+	
+	
+	% 0.5em
+	enspace：a \enspace b 
+	
+	% 空格
+	空格 a\ b 
+	
+	% 硬空格
+	硬空格 a~b
+	
+	% 1pc = 12pt = 4.218mm
+	a \kern 1pc b
+	
+	a \kern -1em b
+	 
+	a \hskip 1em b 
+	
+	a \hspace{35pt} b 
+	
+	% 占位宽度
+	占为宽度 a \hphantom{xyz} b
+	
+	
+	% 弹性长度
+	弹性长度 a \hfill b 
+
+
+	
+	
+	\subsection{\LaTeX 控制符}
+	\# \quad \$ \quad \{ \quad \} \quad \~{} \quad \_{} \quad \^{} \quad \textbackslash
+	
+	\subsection{排版符号}
+	\S \quad \P \quad \dag \quad \ddag \quad \copyright \quad \pounds
+	
+	\subsection{\TeX 标志符号}
+	\TeX{} \quad \LaTeX{} \quad \LaTeXe{}
+	
+	\subsection{引号}
+	` \quad ' \quad `` \quad '' \quad  ``被引号包裹'' %  `表示单引号的左边，'表示单引号的右边
+	
+	\subsection{连字符}
+	- \quad -- \quad --- % 分别生成短、中、长三种连字符
+	
+	\subsection{非英文字符}
+	\oe \quad \OE
+	
+	\subsection{重音符号}
+	\`o \quad \'o
+	
+	
+	
+	\section{插图}
+	
+	
+	% 导言区: \usepackage{graphicx}
+	% 		 \graphicspath{{figure/}, {img/}} % 设置文件查找路径
+	% 语  法: \inncludegraphics[< 选项 >]{< 文件名 >} 
+	% 格  式: EPS, PDF, PNG, JPEG, BMP
+	
+	\includegraphics{road.jpg}
+	
+	\includegraphics{sdu}
+	
+	
+	
+	\includegraphics[scale=0.1]{road.jpg}
+	
+	\includegraphics[scale=0.1]{sdu}
+	
+	!!!!!!!!!!!!!!!!!!!!!!!
+	
+	\includegraphics[height=2cm]{road.jpg}
+	
+	\includegraphics[height=2cm]{sdu}
+
+	\includegraphics[width=2cm]{road.jpg}
+	
+	\includegraphics[width=2cm]{sdu}	
+	
+	
+	!!!!!!!!!!!!!!!!!!!!!!!
+	
+	\includegraphics[height=0.1\textheight]{road.jpg}
+	
+	\includegraphics[height=0.1\textheight]{sdu}
+
+	\includegraphics[width=0.2\textwidth]{road.jpg}
+	
+	\includegraphics[width=0.2\textwidth]{sdu}	
+	
+	
+	!!!!!!!!!!!!!!!!!!!!!!!
+	
+	
+	
+	\includegraphics[angle=-45, width=0.2\textwidth]{road.jpg}
+	
+	\includegraphics[angle=45, width=0.2\textwidth]{sdu}	
+	
+	
+	
+	
+	
+	\section{表格}
+	
+%		\begin{tabular}[<垂直对齐方式>]{<列格式说明>}
+%			<表项> & <表项> & <表项> \\
+%		\end{tabular}
+%		l - 本列左对齐
+%		c - 本列居中对齐
+%		r - 本列右对齐
+% 		p{<宽>} - 本列宽度固定，能够自动换行
+	
+	\begin{tabular}{|l|c|r|c|} % 在后面指定列数
+		\hline % 每行之间使用横线进行分割
+		姓名 & 语文 & 数学 & 外语 \\ % 使用 \\ 进行换行（添加行）
+		\hline
+		张三 & 78 & 134 & 123 \\
+		\hline
+	\end{tabular}
+
+
+	\section{浮动体}
+%		可以对图表进行浮动
+%	图：
+		见图\ref{img_sdu}
+		\begin{figure}[htbp]
+			\centering % 使得以下内容居中
+			\includegraphics[scale=0.4]{sdu}
+			\caption{这是sdu} \label{img_sdu}
+		\end{figure}
+		
+		
+		\newpage
+		
+		在\LaTeX{}中也可以使用表\ref{tab-score}所示的表格
+		\begin{table}[htbp]
+			\centering
+			\caption{成绩单}\label{tab-score}
+				\begin{tabular}{|l| c| c| c|  r|}%会有5列，指定每列的居中形式,|表示每列中间有竖线分开
+				\hline%每行之间由横线分开
+				姓名&语文&数学&外语&政治\\%\\表示换行
+				\hline
+				张三&87&120&25&36\\
+				\hline
+				张1&87&120&25&36\\
+				\hline
+				张2&87&120&25&36\\
+				\hline
+			\end{tabular}
+		\end{table}
+	
+	\newpage
+		
+	\section{数学公式}
+		\subsection{行内公式}
+			\subsubsection{美元符号}
+				交换律$a+b=b+a$，如$1+2=2+1$
+			\subsubsection{小括号}
+				交换律\(a+b=b+a\),如\(1+2=2+1\)
+			\subsubsection{math环境}
+				交换律
+					\begin{math}
+						a+b=b+a
+					\end{math}
+		\subsection{上下标}
+			\subsubsection{上标}
+				$2x^2+3x+5=6$
+			\subsubsection{下标}
+				$a_0,a_1,a_{100}$
+		\subsection{希腊字母}
+			$\alpha$
+			$\beta$
+			$\gamma$
+			$\epsilon$
+			$\pi$
+			$\omega$
+	
+			$\Gamma$
+			$\Delta$
+			$\Theta$
+			$\Pi$
+			$\Omega$
+		\subsection{数学函数}
+			$\log$
+			$\sin$
+			$\cos$
+			$\arccos$
+			$\arcsin$
+			$\ln$
+	
+			$\sin^2x+\cos^2x=1$
+	
+			$\sqrt{2}$
+			$\sqrt{x^2+y^2}$
+			$\sqrt{2+\sqrt{2}}$
+			$\sqrt[4]{x}$
+	\subsection{分式}
+		大约是原体积的$3/4$
+		大约是原体积的$\frac{3}{4}$
+	\subsection{行间公式}
+		\subsubsection{使用 \$\$}
+	        $$2x^2+5x+3=6$$	
+		\subsubsection{使用 displayment}
+			\begin{displaymath}
+				2x^2+5x+3=6	
+			\end{displaymath}
+		\subsubsection{使用 \textbackslash[ }
+			\[2x^2+5x+3=6\]
+		\subsubsection{自动编号公式}
+			交换律见式\ref{eq:commutative}
+			\begin{equation}
+				a+b=b+a \label{eq:commutative}
+			\end{equation}
+    	\subsubsection{不带自动编号公式}
+    		\begin{equation*}
+    			a+b=b+a
+    		\end{equation*} % 需要使用\usepackage{amsmath}
+    
+    
+    
+    
+    
+    
+    
+    \newpage
+    \section{矩阵公式}
+   		\[
+   			\begin{matrix}%&分列 \\分行
+  				0&1\\
+  				1&0
+			\end{matrix}\quad
+		\]
+
+		\[
+			\begin{pmatrix}%括号包裹的矩阵
+ 				0&1\\
+				1&0
+			\end{pmatrix}
+		\]	
+
+		\[
+			\begin{vmatrix}%长竖线包裹的矩阵
+				0&1\\
+				1&0
+			\end{vmatrix}
+		\]
+
+		\[
+			\begin{bmatrix}%长中括号包裹的矩阵
+				0&1\\
+				1&0
+			\end{bmatrix}
+		\]
+
+
+		\[
+			\begin{pmatrix}%括号包裹的矩阵
+				a_{11}^2&a_{12}^2&a_{13}^2\\
+				0&a_{22}&a_{33}
+			\end{pmatrix}
+		\]
+
+		\[
+			\begin{bmatrix}%长中括号包裹的矩阵
+				a_{11}&\dots&a_{1n}\\
+				&\ddots&\vdots\\
+			\end{bmatrix}_{n \times n} % 后面加上下角标
+		\]
+
+		\[
+			\begin{pmatrix}%分块矩阵(矩阵嵌套)
+				\begin{matrix}
+					1&0\\0&1
+				\end{matrix}
+				& \text{\Large 0}\\
+				
+				\text{\Large 0}&
+				\begin{matrix}
+					1&0\\0&1
+				\end{matrix}
+			\end{pmatrix}
+		\]
+
+		\[
+			\begin{pmatrix}%括号包裹的矩阵
+				a_{11}&a_{12}&\cdots&a_{ln}\\
+				&a_{22}&\cdots&a_{2n}\\
+				&		&\dots &\vdots \\
+				\multicolumn{2}{c}{\raisebox{1.3ex}[0pt]{\Huge 0}}
+				&		&a_{nn}
+			\end{pmatrix}
+		\]
+
+
+		\[
+			\begin{pmatrix}%跨列的省略号：\hdotsfor{<列数>}
+				1&\frac 12 &\dots &\frac ln \\
+				\hdotsfor{4}\\
+				m&\frac m2& \dots &\frac mn
+			\end{pmatrix}
+		\]
+
+		%行内小矩阵(smallmatrix)环境
+		复数$z=(x,y)$也可以用矩阵
+		\begin{math}
+	   		\left(%需手动加上左括号
+   				\begin{smallmatrix}
+					x& -y\\y&x
+   				\end{smallmatrix}
+			\right)%需手动加上右括号
+		\end{math}来表示
+
+		%array环境(类似表格环境tabular)
+		\[
+			\begin{array}{r|r}
+				\frac 12&0\\
+				\hline
+				0& -\frac abc\\
+			\end{array}
+		\]
+		
+		
+		
+		% 在数学公式中处理中文时，需要使用\text命令
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+\end{document}
