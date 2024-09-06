@@ -102,6 +102,9 @@ class Node:
         return self.cost < other.cost
 
 
+def find_conflict(solution):
+    pass
+
 
 def cbs(mapf_instance):
     all_constraints = []
