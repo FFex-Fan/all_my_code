@@ -8,6 +8,7 @@
 \usepackage{ctex}
 \usepackage{graphicx} % 导入插图包
 \usepackage{amsmath}
+\usepackage{amssymb}
 \graphicspath{{figure/}, {img/}} % 图片在当前目录下的 figures 和 img 文件夹中
 %\usepackage{gensymb} % 提供了度数符号、弧度符号、特殊符号（欧姆、微米）等
 
@@ -407,8 +408,9 @@
 
 		\[
 			\begin{bmatrix}%长中括号包裹的矩阵
-				a_{11}&\dots&a_{1n}\\
-				&\ddots&\vdots\\
+				a_{11}&\dots & a_{1n}\\
+				&\ddots & \vdots\\
+				&       & a_{nn}
 			\end{bmatrix}_{n \times n} % 后面加上下角标
 		\]
 
@@ -469,6 +471,59 @@
 		% 在数学公式中处理中文时，需要使用\text命令
 	
 	
+	
+	
+	
+	
+	\newpage
+	\section{多行公式}
+	%gather和gather*环境(可以使用\\换行)
+	%带编号
+	\begin{gather}
+		a+b=b+a\\
+		ab  ba
+	\end{gather}
+	
+	%不带编号
+	\begin{gather*}
+	3+5=5+3\\
+	3 \times 5=5\times 3
+	\end{gather*}
+	
+	%在\\前使用\notetag阻止编号
+	\begin{gather}
+		3^2+4^2=5^2
+	\end{gather}
+	
+	%align和align*环境(用&对齐)
+	%带编号
+	\begin{align}
+		x &=t+\cos t+1\\
+		y &=2 \sin t
+	\end{align}
+	%不带编号
+	\begin{align*}
+	x &=t+\cos t+1\\
+	y &=2 \sin t
+	\end{align*}
+	
+	%split环境(对齐采用align环境的方式，编号在中间)
+	\begin{equation}
+	\begin{split}
+	\cos 2x &=\cos^2 x- \sin^2 x\\
+	&=2\cos^2 x-1
+	\end{split}
+	\end{equation}		
+	
+	%case环境
+	%每行公式中使用&分隔为两部分
+	%通常表示值和后面的条件
+	\begin{equation}
+	D(x)=\begin{cases}
+	1,& if  x \in \mathbb{Q};\\
+	0,& if  x \in \mathbb{R} \setminus \mathbb{Q}
+	\end{cases}
+	\end{equation}
 	
 	
 	

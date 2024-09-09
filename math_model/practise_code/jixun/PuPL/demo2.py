@@ -1,5 +1,15 @@
 # coding=utf-8
 
+"""
+target:
+    Maximize  = 1000 * x1 + 2000 * x2 + 3000 * x3
+
+condition:
+    x1 + 2 * x2 + 3 * x3 <= 10
+    0 * x1 + 1 * x2 + 2 * x3 <= 5
+    x1, x2, x3 >= 0
+"""
+
 from pulp import *
 
 paints = {"type1", "type2", "type3"}
