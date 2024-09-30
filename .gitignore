@@ -25,9 +25,9 @@ logs/
 # 环境设置文件
 .env
 .venv/
-env/
+# env/
 venv/
-ENV/
+# ENV/
 env.bak/
 venv.bak/
 

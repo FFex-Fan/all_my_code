@@ -15,8 +15,9 @@ import time
 
 # 定义训练的设备
 # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-device = torch.device("mps" if not torch.cuda.is_available() else "cpu")
+device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 
+print(device)
 
 # 准备数据集
 train_data = torchvision.datasets.CIFAR10(root='../data', train=True, download=True,

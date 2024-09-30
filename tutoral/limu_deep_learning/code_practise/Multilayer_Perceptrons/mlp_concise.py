@@ -1,4 +1,4 @@
-# coding=utf-8
+"""多层感知机简易实现"""
 import torch
 from torch import nn
 from d2l import torch as d2l
@@ -24,5 +24,5 @@ if __name__ == '__main__':
 
     train_iter, test_iter = d2l.load_data_fashion_mnist(batch_size)  # 加载数据集
 
-    d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, trainer) # 训练模型
+    d2l.train_ch3(net, train_iter, test_iter, loss, num_epochs, trainer)  # 训练模型
     d2l.plt.show()

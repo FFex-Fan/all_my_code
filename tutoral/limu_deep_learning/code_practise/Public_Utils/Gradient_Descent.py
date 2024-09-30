@@ -13,7 +13,7 @@ y = np.array([2, 4, 6, 8])
 
 # 超参数
 alpha = 0.01  # 学习率
-epochs = 40  # 迭代次数
+epochs = 100  # 迭代次数
 
 # 初始化参数 (随机值)
 b = np.random.randn()
@@ -26,14 +26,18 @@ loss_history = []
 m = len(x)
 for epoch in range(epochs):
     y_pred = b + w * x
-    d_b = (-2 / m) * np.sum(y - y_pred)
-    d_w = (-2 / m) * np.sum((y - y_pred) * x)
+    d_b = (-2 / m) * np.sum(y - y_pred)  # Loss func 对 b 进行求偏导
+    d_w = (-2 / m) * np.sum((y - y_pred) * x)  # Loss func 对 w 进行求偏导
     b -= alpha * d_b
     w -= alpha * d_w
+    print(f"epoch: {epoch}, b: {b}, w: {w}")
 
     # 计算损失
     loss = np.mean((y - y_pred) ** 2)
     loss_history.append(loss)
+
+print("init b is {}".format(b))
+print(f"init w is {w}")
 
 print(f'b: {b}, w: {w}')
 print(f'Final loss: {loss_history[-1]}')
